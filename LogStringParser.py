@@ -1,5 +1,6 @@
 '''
 this version takes in a big long string of the log file rather than a file object thing
+I think this is cheating lol
 
 
 '''

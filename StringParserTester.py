@@ -48,4 +48,5 @@ lsp = LogStringReader(str_log, error_keys, known_errors, known_non_errors)
 #     print (key)
 #     for value in log_errors[key]:
 #         print (value)
+#         print ("im cheating for hacktober")
 

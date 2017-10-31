@@ -5,7 +5,7 @@ from LogStringParser import LogStringReader
 
 # ---------- needed input variables to run LogStringReader class -------------- #
 # the one long string of the log
-str_log = open('syslog.3', 'r').read()
+str_log = open('syslogClassShare.5', 'r').read()
 # the error keys to look out for possible new errors
 # having trouble filtering out errors of numbered values, so they're currently commented out
 error_keys = 'exception', 'warn', 'error', 'fail', 'unauthorized', 'timeout', 'refused', 'NoSuchPageException' #, '404', '401', '500'

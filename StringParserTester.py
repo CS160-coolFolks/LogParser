@@ -5,7 +5,7 @@ from LogStringParser import LogStringReader
 
 # ---------- needed input variables to run LogStringReader class -------------- #
 # the one long string of the log
-str_log = open('syslogClassShare.5', 'r').read()
+str_log = open('syslog.5', 'r').read()
 # the error keys to look out for possible new errors
 # having trouble filtering out errors of numbered values, so they're currently commented out
 error_keys = 'exception', 'warn', 'error', 'fail', 'unauthorized', 'timeout', 'refused', 'NoSuchPageException' #, '404', '401', '500'
@@ -28,7 +28,7 @@ known_non_errors = [
 # ----------------------------------------------------------------------------- #
 
 print ("Error log string received")
-lsp = LogStringReader(str_log, error_keys, known_errors, known_non_errors)
+# lsp = LogStringReader(str_log, error_keys, known_errors, known_non_errors)
 
 # testing maybe_errors
 # maybes = lsp.maybe_new_errors()
@@ -50,3 +50,14 @@ lsp = LogStringReader(str_log, error_keys, known_errors, known_non_errors)
 #         print (value)
 #         print ("im cheating for hacktober")
 
+# testing finding ', 0 [problem]' regex
+
+lsp_regex = LogStringReader(str_log, error_keys, known_errors, [])
+log_errors = lsp_regex.find_errors()
+for key in log_errors:
+    print (key)
+    for value in log_errors[key]:
+        print (value)
+
+
+# not_error = re.search(',0(^int*),', f, re.M | re.I)

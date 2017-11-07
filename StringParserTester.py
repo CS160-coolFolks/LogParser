@@ -51,13 +51,20 @@ print ("Error log string received")
 #         print ("im cheating for hacktober")
 
 # testing finding ', 0 [problem]' regex
+import re
 
-lsp_regex = LogStringReader(str_log, error_keys, known_errors, [])
-log_errors = lsp_regex.find_errors()
+lsp_regex = LogStringReader(str_log, error_keys, known_errors, ['ljkghfalwknsfhlawnsdflakwd'])
+log_errors = lsp_regex.maybe_new_errors()
 for key in log_errors:
-    print (key)
-    for value in log_errors[key]:
-        print (value)
+    # print (key)
+    this_means_theres_an_error = re.search(', [1-9],', key, re.M | re.I)
+    if this_means_theres_an_error is None:
+        print ("we didn't find an error with a number in it")
+        print ("so no key for you")
+    else:
+        for value in log_errors[key]:
+            print ("aw shit son, " + this_means_theres_an_error)
+            print (value)
 
 
-# not_error = re.search(',0(^int*),', f, re.M | re.I)
+

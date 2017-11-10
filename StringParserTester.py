@@ -28,7 +28,7 @@ known_non_errors = [
 # ----------------------------------------------------------------------------- #
 
 print ("Error log string received")
-# lsp = LogStringReader(str_log, error_keys, known_errors, known_non_errors)
+lsp = LogStringReader(str_log, error_keys, known_errors, known_non_errors)
 
 # testing maybe_errors
 # maybes = lsp.maybe_new_errors()
@@ -48,7 +48,6 @@ print ("Error log string received")
 #     print (key)
 #     for value in log_errors[key]:
 #         print (value)
-#         print ("im cheating for hacktober")
 
 # testing finding ', 0 [problem]' regex
 import re
@@ -57,13 +56,14 @@ lsp_regex = LogStringReader(str_log, error_keys, known_errors, ['ljkghfalwknsfhl
 log_errors = lsp_regex.maybe_new_errors()
 for key in log_errors:
     # print (key)
-    this_means_theres_an_error = re.search(', [1-9],', key, re.M | re.I)
+    this_means_theres_an_error = re.search(', [1-9999]', key, re.M | re.I)
+    # if this_means_theres_an_error is None:
     if this_means_theres_an_error is None:
         print ("we didn't find an error with a number in it")
-        print ("so no key for you")
+        print ("so no key for you from: " + key[0:15])
     else:
+        print ("aw shit son, error found: \n" + key)
         for value in log_errors[key]:
-            print ("aw shit son, " + this_means_theres_an_error)
             print (value)
 
 
